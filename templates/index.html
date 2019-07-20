@@ -1,0 +1,52 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/datatables/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <title>Update White List Back List</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <input placeholder="Domain" class="input-large gf-form-input ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" type="text" />
+        <input placeholder="Domain" class="input-large gf-form-input ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" type="text" />
+      
+        <br/>
+        <br/>
+        <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+
+            </tr>
+        </thead>
+
+    </table>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf8" src="/static/jquery/jquery-1.9.1.js"></script>
+  <script type="text/javascript" charset="utf8" src="/static/datatables/jquery.dataTables.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      var table = $('#example').DataTable( {
+        responsive: true,
+        serverSide: false,
+        ajax: {
+          url: "/get/list",
+          method: 'GET',
+          dataSrc: function ( json ) {
+            return json.data;
+          }
+        }
+    } );
+} );
+  </script>
+</body>
+
+</html>
